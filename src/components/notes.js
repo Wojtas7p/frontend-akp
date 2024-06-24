@@ -95,7 +95,7 @@ class Notes extends React.Component {
     }
 
     fetchNotes = () => {
-        fetch('https://akp-app-backend.onrender.com')
+        fetch('https://akp-app-backend.onrender.com/notes')
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -145,7 +145,7 @@ class Notes extends React.Component {
             }
         }
 
-        fetch(`https://akp-app-backend.onrender.com/${id}`, {
+        fetch(`https://akp-app-backend.onrender.com/notes/${id}`, {
             method: 'DELETE',
         }).then(() => {
             // Ustaw nową aktywną notatkę
@@ -179,7 +179,7 @@ class Notes extends React.Component {
         });
 
         this.setState({ notes: updatedNotes, showAddElement: false, newElementTitle: '', newElementBody: '', newElementImage: '', titleErrorList: false, editingElementId: null }, () => {
-            fetch(`https://akp-app-backend.onrender.com/${noteId}`, {
+            fetch(`https://akp-app-backend.onrender.com/notes/${noteId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -220,7 +220,7 @@ class Notes extends React.Component {
         });
 
         this.setState({ notes: updatedNotes, showListElement: false, newListElementTitle: '', newListElementBody: '', newListElementImage: '', titleErrorEl: false, editingListElementId: null }, () => {
-            fetch(`https://akp-app-backend.onrender.com/${noteId}`, {
+            fetch(`https://akp-app-backend.onrender.com/notes/${noteId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -330,8 +330,8 @@ class Notes extends React.Component {
             image: newNoteImage,
             body: []
         };
-
-        fetch('https://akp-app-backend.onrender.com', {
+        // http://localhost:10000/notes
+        fetch('https://akp-app-backend.onrender.com/notes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -385,7 +385,7 @@ class Notes extends React.Component {
                 image: newElementImage
             };
 
-            fetch(`https://akp-app-backend.onrender.com/${noteId}`, {
+            fetch(`https://akp-app-backend.onrender.com/notes/${noteId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -424,7 +424,7 @@ class Notes extends React.Component {
                 newNote.body = [newElement];
             }
 
-            fetch(`https://akp-app-backend.onrender.com/${newNote._id}`, {
+            fetch(`https://akp-app-backend.onrender.com/notes/${newNote._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -491,7 +491,7 @@ class Notes extends React.Component {
             return note;
         });
 
-        fetch(`https://akp-app-backend.onrender.com/${noteId}`, {
+        fetch(`https://akp-app-backend.onrender.com/notes/${noteId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
